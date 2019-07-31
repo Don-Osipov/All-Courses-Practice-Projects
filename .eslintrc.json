@@ -17,6 +17,8 @@
         "func-names": "off",
         "no-process-exit": "off",
         "object-shorthand": "off",
+        "spaced-comment": 0,
+        "no-alert": 0,
         "node/no-unsupported-features/es-syntax": [
             "error",
             {
