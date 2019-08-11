@@ -30,7 +30,7 @@ const renderRecipe = recipeobj => {
     // prettier-ignore
     const markup = `
     <li>
-        <a class="results__link" href="#23456">
+        <a class="results__link" href="#${recipeobj.recipe.uri}">
             <figure class="results__fig">
                 <img src="${recipeobj.recipe.image}" alt="${recipeobj.recipe.label}">
             </figure>

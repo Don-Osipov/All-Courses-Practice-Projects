@@ -4,6 +4,10 @@
         "prettier",
         "plugin:node/recommended"
     ],
+    "env": {
+        "browser": true,
+        "commonjs": true
+    },
     "plugins": [
         "prettier"
     ],
