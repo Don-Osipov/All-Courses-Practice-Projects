@@ -18,11 +18,11 @@ export const highlightSelected = uri => {
     });
 
     document
-        .querySelector(`a[href="#${uri}"]`)
+        .querySelector(`.results__link[href="#${uri}"]`)
         .classList.add('results__link--active');
 };
 
-const limitRecipeTitle = (title, limit = 17) => {
+export const limitRecipeTitle = (title, limit = 17) => {
     const newTitle = [];
     if (title.length > limit) {
         title.split(' ').reduce((accumulator, current) => {
