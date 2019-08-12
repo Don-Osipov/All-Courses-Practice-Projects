@@ -11,6 +11,17 @@ export const clearResults = () => {
     elements.searchResPages.innerHTML = '';
 };
 
+export const highlightSelected = uri => {
+    const resultsList = document.querySelectorAll('.results__link');
+    resultsList.forEach(el => {
+        el.classList.remove('results__link--active');
+    });
+
+    document
+        .querySelector(`a[href="#${uri}"]`)
+        .classList.add('results__link--active');
+};
+
 const limitRecipeTitle = (title, limit = 17) => {
     const newTitle = [];
     if (title.length > limit) {
@@ -79,7 +90,7 @@ export const renderResults = (recipes, page = 2, recipesPerPage = 10) => {
     // Render results of current page
     const start = (page - 1) * recipesPerPage;
     const end = page * recipesPerPage;
-    console.log(recipes);
+    // console.log(recipes);
 
     recipes.slice(start, end).forEach(renderRecipe);
 

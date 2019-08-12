@@ -4,6 +4,7 @@ import Search from './models/Search';
 import Recipe from './models/Recipe';
 import { elements, renderLoader, clearLoader } from './views/base';
 import * as searchView from './views/searchView';
+import * as recipeView from './views/recipeView';
 
 /*
  ! GLOBAL STATE
@@ -70,10 +71,14 @@ elements.searchResPages.addEventListener('click', e => {
 const controlRecipe = async () => {
     // Get uri from url
     const uri = window.location.hash.replace('#', '');
-    console.log(uri);
 
     if (uri) {
         // Prepare UI for changes
+        recipeView.clearRecipe();
+        renderLoader(elements.recipe);
+
+        // Highlight selected search item
+        if (state.search) searchView.highlightSelected(uri);
 
         // Create a new recipe object
         state.recipe = new Recipe(uri);
@@ -90,7 +95,8 @@ const controlRecipe = async () => {
             state.recipe.calcServings();
 
             // Render recipe
-            console.log(state.recipe);
+            clearLoader();
+            recipeView.renderRecipe(state.recipe);
         } catch (error) {
             console.log(error);
 
